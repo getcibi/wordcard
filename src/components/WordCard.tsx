@@ -1,6 +1,26 @@
 import React from 'react'
 
-const WordCard = ({ wordInfo }) => {
+interface WordInfo {
+  word: string;
+  pronunciation: string;
+  chineseMeaning: string;
+  wordForms: string;
+  englishDefinitions: string[];
+  phrases: string[];
+  examples: string[];
+  memoryTip: string;
+  themeColor: string;
+}
+
+interface ColorVariables {
+  primary: string;
+  secondary: string;
+  background: string;
+  text: string;
+  sectionBackground: string;
+}
+
+const WordCard: React.FC<{ wordInfo: WordInfo }> = ({ wordInfo }) => {
   const {
     word,
     pronunciation,
@@ -13,11 +33,11 @@ const WordCard = ({ wordInfo }) => {
     themeColor
   } = wordInfo
 
-  const getColorVariables = (color) => {
-    // This is a simplified version. In a real application, you'd use a color library to generate these variations.
+  const getColorVariables = (color: string): ColorVariables => {
+    // 这是一个简化版本。在实际应用中，您可能需要一个颜色库来生成这些变体。
     return {
       primary: color,
-      secondary: color, // You might want to adjust this to be a lighter shade
+      secondary: color, // 您可能想要调整这个为更浅的色调
       background: '#ffffff',
       text: '#333333',
       sectionBackground: '#f0f0f0'
